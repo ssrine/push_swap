@@ -6,7 +6,7 @@
 /*   By: nel-hark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 02:48:17 by nel-hark          #+#    #+#             */
-/*   Updated: 2023/04/29 13:40:39 by nel-hark         ###   ########.fr       */
+/*   Updated: 2023/04/29 17:15:56 by nel-hark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int *fill_array(char **av, int ac)
     int counterargs;
 
     counterargs = get_array_size(av, ac);
-    // printf("---%d\n", counterargs);
+    //printf("---%d\n", counterargs);
     tab = malloc(sizeof(int) *(counterargs));
     i = 1;
     int size = 0;
@@ -111,28 +111,29 @@ int get_array_size(char **av, int ac)
 
 void    ft_sort_int_tab(int *tab, int size)
 {
-    int    i;
-    int    swap;
+   int	i;
+	int	temp;
+	int	j;
+	int	count;
 
-    while (size > 0)
-    {
-        i = 0;
-        while (i < size)
-        {
-            if (tab[i] > tab[i + 1])
-            {
-               
-                swap = tab [i];
-                tab [i] = tab [i + 1];
-                tab [i + 1] = swap;
-            }
-            //  printf("3aa%d\n", tab[i]);
-            i++;
-        }
-            size--;
-            
-            // printf("3aa%d\n", size );
-    }
+	i = 0;
+	j = 0;
+	count = 0;
+	while (i < size - 1)
+	{
+		if (tab[i] > tab[i + 1])
+		{
+			temp = tab[i];
+			tab[i] = tab[i + 1];
+			tab[i + 1] = temp;
+			count++;
+			i = 0;
+		}
+		else
+			i++;
+	}
+	if (!count)
+		exit(0);
      
 }
 
@@ -150,7 +151,7 @@ int main(int ac, char **av)
 
 
     int size = get_array_size(av, ac);
-    stack.size = size - 1;
+    stack.size = size;
     int *tab = fill_array(av, ac);
     check_duplicates(tab, size);
     fill_stack_a(&stack.a, tab, size);
@@ -168,22 +169,27 @@ int main(int ac, char **av)
             ft_sort_int_tab(stack.init_array, stack.size);
 			init_helper(&helper, size);
 			push_to_b(&stack.a, &stack.b, &helper, stack.init_array);
-            size--;
+            stack.size--;
         //    max_in_b(&stack.b, *stack.init_array);
             push_to_a(&stack);
+            // printf("-->%d\n",stack.size);
+            // sleep(1);
+            // if(stack.size %  2 == 0)
+            //     rra(&stack.a);
+            
 	}
     // system("leaks push_swap");
     p = stack.a;
     l = stack.b;
-    // while (p)
-    // {
-    //     printf("staaaaackkkk AAA==> %d\n", p->data);
-    //     p = p->link;
-    // }
-    // while (l)
-    // {
-    //     printf("staackkkkk BBB==> %d\n", l->data);
-    //     l = l->link;
-    // }
+    while (p)
+    {
+        printf("staaaaackkkk AAA==> %d\n", p->data);
+        p = p->link;
+    }
+    while (l)
+    {
+        printf("staackkkkk BBB==> %d\n", l->data);
+        l = l->link;
+    }
 }
 

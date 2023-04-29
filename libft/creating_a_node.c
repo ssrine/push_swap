@@ -20,5 +20,5 @@ int main()
     head->data = 45;
     head->link = NULL;
 
-    printf("%d", head->data);
+    //printf("%d", head->data);
 }

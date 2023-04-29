@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
- // program to count the number of nodes
+ program to count the number of nodes
 
 struct node
 {
@@ -17,7 +17,7 @@ void count_of_nodes(struct node *head)
 {
     int count = 0;
     if(head == NULL)
-        printf("linked list is empty");
+        //printf("linked list is empty");
     struct node *ptr = NULL;
     ptr = head;
     while(ptr != NULL)
@@ -25,7 +25,7 @@ void count_of_nodes(struct node *head)
         count++;
         ptr = ptr->link;  // next addres 
     }
-    printf("%d", count);
+    //printf("%d", count);
 }
 void add_to_end(struct node *head, int data)
 {
@@ -47,11 +47,11 @@ void print_data(struct node *head)
     struct node *ptr = NULL;
 
     if(head == NULL)
-        printf("linked list is empty");
+        //printf("linked list is empty");
     ptr = head;
     while(ptr != NULL)
     {
-        printf("%d", ptr->data);
+        //printf("%d", ptr->data);
         ptr = ptr->link;
     }
 }
