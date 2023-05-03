@@ -6,7 +6,7 @@
 /*   By: nel-hark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 08:21:30 by nel-hark          #+#    #+#             */
-/*   Updated: 2023/05/03 16:55:08 by nel-hark         ###   ########.fr       */
+/*   Updated: 2023/05/03 17:38:44 by nel-hark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,27 +56,27 @@ void	bonus_pb(t_list **a, t_list **b)
 
 void	do_moves(char *move, t_stack *vars)
 {
-	if (!ft_strncmp(move, "sa", ft_strlen("sa")))
+	if (!ft_strncmp(move, "sa\n", 3))
 		bonus_sa(vars->a);
-	else if (!ft_strncmp(move, "sb", ft_strlen("sb")))
+	else if (!ft_strncmp(move, "sb\n", 3))
 		bonus_sb(vars->b);
-	else if (!ft_strncmp(move, "rra", ft_strlen("rra")))
+	else if (!ft_strncmp(move, "rra\n", 4))
 		bonus_rra(&vars->a);
-	else if (!ft_strncmp(move, "rrb", ft_strlen("rrb")))
+	else if (!ft_strncmp(move, "rrb\n", 4))
 		bonus_rrb(&vars->b);
-	else if (!ft_strncmp(move, "rrr", ft_strlen("rrr")))
+	else if (!ft_strncmp(move, "rrr\n", 4))
 		bonus_rrr(&vars->a, &vars->b);
-	else if (!ft_strncmp(move, "ss", ft_strlen("ss")))
+	else if (!ft_strncmp(move, "ss\n", 3))
 		bonus_ss(&vars->a, &vars->b);
-	else if (!ft_strncmp(move, "pa", ft_strlen("pa")))
+	else if (!ft_strncmp(move, "pa\n", 3))
 		bonus_pa(&vars->a, &vars->b);
-	else if (!ft_strncmp(move, "pb", ft_strlen("pb")))
+	else if (!ft_strncmp(move, "pb\n", 3))
 		bonus_pb(&vars->a, &vars->b);
-	else if (!ft_strncmp(move, "ra", ft_strlen("ra")))
+	else if (!ft_strncmp(move, "ra\n", 3))
 		bonus_ra(&vars->a);
-	else if (!ft_strncmp(move, "rb", ft_strlen("rb")))
+	else if (!ft_strncmp(move, "rb\n", 3))
 		bonus_rb(&vars->b);
-	else if (!ft_strncmp(move, "rr", ft_strlen("rr")))
+	else if (!ft_strncmp(move, "rr\n", 3))
 		bonus_rr(&vars->a, &vars->b);
 	else
 		print_error();

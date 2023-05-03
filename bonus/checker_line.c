@@ -6,7 +6,7 @@
 /*   By: nel-hark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 08:09:33 by nel-hark          #+#    #+#             */
-/*   Updated: 2023/05/03 16:55:52 by nel-hark         ###   ########.fr       */
+/*   Updated: 2023/05/03 17:33:40 by nel-hark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ int	main(int ac, char **av)
 		move = get_next_line(0);
 		while (move)
 		{
-			if (!ft_strncmp(move, "\n", ft_strlen("\n")))
-				break ;
 			do_moves(move, &vars);
 			free(move);
 			move = get_next_line(0);
