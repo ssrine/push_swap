@@ -6,7 +6,7 @@
 /*   By: nel-hark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 08:21:30 by nel-hark          #+#    #+#             */
-/*   Updated: 2023/05/03 15:34:12 by nel-hark         ###   ########.fr       */
+/*   Updated: 2023/05/03 16:55:08 by nel-hark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ void	do_moves(char *move, t_stack *vars)
 		bonus_sa(vars->a);
 	else if (!ft_strncmp(move, "sb", ft_strlen("sb")))
 		bonus_sb(vars->b);
+	else if (!ft_strncmp(move, "rra", ft_strlen("rra")))
+		bonus_rra(&vars->a);
+	else if (!ft_strncmp(move, "rrb", ft_strlen("rrb")))
+		bonus_rrb(&vars->b);
+	else if (!ft_strncmp(move, "rrr", ft_strlen("rrr")))
+		bonus_rrr(&vars->a, &vars->b);
 	else if (!ft_strncmp(move, "ss", ft_strlen("ss")))
 		bonus_ss(&vars->a, &vars->b);
 	else if (!ft_strncmp(move, "pa", ft_strlen("pa")))
@@ -72,12 +78,6 @@ void	do_moves(char *move, t_stack *vars)
 		bonus_rb(&vars->b);
 	else if (!ft_strncmp(move, "rr", ft_strlen("rr")))
 		bonus_rr(&vars->a, &vars->b);
-	else if (!ft_strncmp(move, "rra", ft_strlen("rra")))
-		bonus_rra(&vars->a);
-	else if (!ft_strncmp(move, "rrb", ft_strlen("rrb")))
-		bonus_rrb(&vars->b);
-	else if (!ft_strncmp(move, "rrr", ft_strlen("rrr")))
-		bonus_rrr(&vars->a, &vars->b);
 	else
 		print_error();
 }

@@ -6,7 +6,7 @@
 /*   By: nel-hark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 08:22:22 by nel-hark          #+#    #+#             */
-/*   Updated: 2023/05/03 15:33:54 by nel-hark         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:47:54 by nel-hark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	bonus_ss(t_list **a, t_list **b)
 {
-	sa(*a);
-	sb(*b);
+	bonus_sa(*a);
+	bonus_sb(*b);
 }
 
 void	bonus_rrr(t_list **a, t_list **b)

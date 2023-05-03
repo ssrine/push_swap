@@ -6,7 +6,7 @@
 /*   By: nel-hark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:24:00 by nel-hark          #+#    #+#             */
-/*   Updated: 2023/05/03 15:36:11 by nel-hark         ###   ########.fr       */
+/*   Updated: 2023/05/03 16:45:09 by nel-hark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <stdio.h>
+# include <string.h>
 # include <fcntl.h>
 # include <unistd.h>
 
