@@ -6,11 +6,11 @@
 /*   By: nel-hark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 08:21:30 by nel-hark          #+#    #+#             */
-/*   Updated: 2023/05/03 12:12:31 by nel-hark         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:34:12 by nel-hark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../push_swap.h"
+#include "../push_swap.h"
 
 void	bonus_rb(t_list **list)
 {

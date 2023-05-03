@@ -6,12 +6,12 @@
 /*   By: nel-hark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 08:09:33 by nel-hark          #+#    #+#             */
-/*   Updated: 2023/05/03 14:44:11 by nel-hark         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:34:55 by nel-hark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../push_swap.h"
-# include "gnl/get_next_line.h"
+#include "../push_swap.h"
+#include "gnl/get_next_line.h"
 
 void	fill_stack_a(t_list **a, int *array, int size)
 {
@@ -50,48 +50,6 @@ int	*fill_array(char **av, int ac)
 	return (array.tab);
 }
 
-int	get_array_size(char **av, int ac)
-{
-	int		i;
-	char	**split;
-	int		size;
-	int		j;
-
-	i = 1;
-	size = 0;
-	while (i < ac)
-	{
-		split = ft_split(av[i], ' ');
-		if (split[0] == '\0')
-			print_error();
-		j = 0;
-		while (split[j])
-		{
-			free(split[j]);
-			size++;
-			j++;
-		}
-		free(split);
-		i++;
-	}
-	return (size);
-}
-int	is_sorted2(int *arr, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size - 1)
-	{
-		if (arr[i] > arr[i + 1])
-		{
-			return (0);
-		}
-		i++;
-	}
-	return (1);
-}
-
 void	init_main(t_stack *stack, int ac, char **av)
 {
 	stack->size = get_array_size(av, ac);
@@ -102,28 +60,28 @@ void	init_main(t_stack *stack, int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	t_stack stack;
+	t_stack	vars;
 	char	*move;
 
-	stack.a = NULL;
-	stack.b = NULL;
+	vars.a = NULL;
+	vars.b = NULL;
 	if (ac > 1)
 	{
-		init_main(&stack, ac, av);
+		init_main(&vars, ac, av);
 		move = get_next_line(0);
-	
-					while (move)
-				{
-					if (!ft_strncmp(move, "\n", ft_strlen("\n")))
-						break ;
-					do_moves(move, &stack);
-					free(move);
-					move = get_next_line(0);
-				}
-		if (is_sorted2(stack.init_array, stack.size) == 1 && !ft_lstsize(stack.b)
-			&& ft_lstsize(stack.a) == stack.size)
+		while (move)
+		{
+			if (!ft_strncmp(move, "\n", ft_strlen("\n")))
+				break ;
+			do_moves(move, &vars);
+			free(move);
+			move = get_next_line(0);
+		}
+		if (check_stack_sorted(&vars.a) == 1 && !ft_lstsize(vars.b)
+			&& ft_lstsize(vars.a) == vars.size)
 			ft_putstr_fd(1, "OK\n");
 		else
 			ft_putstr_fd(1, "KO\n");
 	}
+	return (0);
 }
