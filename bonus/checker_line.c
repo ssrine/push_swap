@@ -6,7 +6,7 @@
 /*   By: nel-hark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 08:09:33 by nel-hark          #+#    #+#             */
-/*   Updated: 2023/05/03 14:25:23 by nel-hark         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:44:11 by nel-hark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,21 @@ int	get_array_size(char **av, int ac)
 	}
 	return (size);
 }
+int	is_sorted2(int *arr, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		if (arr[i] > arr[i + 1])
+		{
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
 
 void	init_main(t_stack *stack, int ac, char **av)
 {
@@ -83,20 +98,6 @@ void	init_main(t_stack *stack, int ac, char **av)
 	stack->init_array = fill_array(av, ac);
 	check_duplicates(stack->init_array, stack->size);
 	fill_stack_a(&stack->a, stack->init_array, stack->size);
-}
-int	is_sorted2(t_list **a)
-{
-	while ((*a) && (*a)->link != NULL)
-	{
-		if ((*a)->data < (*a)->link->data)
-		{
-			*a = (*a)->link;
-			return (1);
-		}
-		else
-			return (0);
-	}
-	return (0);
 }
 
 int	main(int ac, char **av)
@@ -110,16 +111,16 @@ int	main(int ac, char **av)
 	{
 		init_main(&stack, ac, av);
 		move = get_next_line(0);
-		while (move)
-		{
-			
-			if (!ft_strncmp(move, "\n", ft_strlen("\n")))
-				break ;
-			do_moves(move, &stack);
-			free(move);
-			move = get_next_line(0);
-		}
-		if (is_sorted2(&stack.a) == 0 && !ft_lstsize(stack.b)
+	
+					while (move)
+				{
+					if (!ft_strncmp(move, "\n", ft_strlen("\n")))
+						break ;
+					do_moves(move, &stack);
+					free(move);
+					move = get_next_line(0);
+				}
+		if (is_sorted2(stack.init_array, stack.size) == 1 && !ft_lstsize(stack.b)
 			&& ft_lstsize(stack.a) == stack.size)
 			ft_putstr_fd(1, "OK\n");
 		else

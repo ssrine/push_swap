@@ -6,7 +6,7 @@
 /*   By: nel-hark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:24:00 by nel-hark          #+#    #+#             */
-/*   Updated: 2023/05/03 12:46:14 by nel-hark         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:44:16 by nel-hark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,5 @@ void	bonus_rr(t_list **a, t_list **b);
 void	fill_stack_a(t_list **a, int *array, int size);
 int		*fill_array(char **av, int ac);
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
-int	is_sorted2(t_list **a);
+int	is_sorted2(int *arr, int size);
 #endif
