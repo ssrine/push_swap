@@ -6,7 +6,7 @@
 /*   By: nel-hark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 08:09:33 by nel-hark          #+#    #+#             */
-/*   Updated: 2023/05/03 12:22:48 by nel-hark         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:25:23 by nel-hark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,7 @@ int	get_array_size(char **av, int ac)
 void	init_main(t_stack *stack, int ac, char **av)
 {
 	stack->size = get_array_size(av, ac);
-	stack->init_array = (int *)malloc(sizeof(int) * stack->size);
-	fill_array(av, ac);
+	stack->init_array = fill_array(av, ac);
 	check_duplicates(stack->init_array, stack->size);
 	fill_stack_a(&stack->a, stack->init_array, stack->size);
 }
