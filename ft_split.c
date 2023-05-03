@@ -1,5 +1,3 @@
-
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -8,13 +6,13 @@
 /*   By: nel-hark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 17:42:10 by nel-hark          #+#    #+#             */
-/*   Updated: 2023/04/03 15:10:27 by nel-hark         ###   ########.fr       */
+/*   Updated: 2023/04/30 10:41:30 by nel-hark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	word_counter(char  *s, char c)
+static int	word_counter(char *s, char c)
 {
 	int	i;
 	int	word;
@@ -45,7 +43,7 @@ static void	free_str(char **str, int i)
 	free(str);
 }
 
-static int	size_word(char  *s, char set, int i)
+static int	size_word(char *s, char set, int i)
 {
 	int	size;
 
@@ -58,7 +56,7 @@ static int	size_word(char  *s, char set, int i)
 	return (size);
 }
 
-char	**ft_split(char  *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char	**str;
 	int		i;

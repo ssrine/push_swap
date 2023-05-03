@@ -6,7 +6,7 @@
 /*   By: nel-hark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:59:36 by nel-hark          #+#    #+#             */
-/*   Updated: 2023/04/15 06:59:43 by nel-hark         ###   ########.fr       */
+/*   Updated: 2023/04/30 17:23:36 by nel-hark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_putstr_fd(int fd, char *s)
 		i++;
 	}
 }
+
 char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	char	*p;
@@ -78,33 +79,8 @@ size_t	ft_strlen(char *str)
 	}
 	return (a);
 }
+
 void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
-}
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	long	c;
-
-	c = (long)n;
-	if (c == -2147483648)
-	{
-		write(fd, "-2147483648", 11);
-	}
-	else if (c < 0)
-	{
-		ft_putchar_fd('-', fd);
-		ft_putnbr_fd(c * -1, fd);
-	}
-	else
-	{
-		if (c < 10)
-			ft_putchar_fd(c + '0', fd);
-		else
-		{
-			ft_putnbr_fd(c / 10, fd);
-			ft_putchar_fd(c % 10 + '0', fd);
-		}
-	}
 }

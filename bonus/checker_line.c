@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker_line.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nel-hark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 02:48:17 by nel-hark          #+#    #+#             */
-/*   Updated: 2023/05/03 11:05:56 by nel-hark         ###   ########.fr       */
+/*   Created: 2023/05/03 08:09:33 by nel-hark          #+#    #+#             */
+/*   Updated: 2023/05/03 12:22:48 by nel-hark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+# include "../push_swap.h"
+# include "gnl/get_next_line.h"
 
 void	fill_stack_a(t_list **a, int *array, int size)
 {
@@ -76,41 +77,53 @@ int	get_array_size(char **av, int ac)
 	return (size);
 }
 
-void	sort_stack(t_stack *stack, t_helper *helper)
+void	init_main(t_stack *stack, int ac, char **av)
 {
-	if (stack->size == 2)
-		sa(stack->a);
-	else if (stack->size == 3)
-		sort_tlata(&stack->a);
-	else if (stack->size <= 5)
-		sort_five(&stack->a, &stack->b);
-	else
+	stack->size = get_array_size(av, ac);
+	stack->init_array = (int *)malloc(sizeof(int) * stack->size);
+	fill_array(av, ac);
+	check_duplicates(stack->init_array, stack->size);
+	fill_stack_a(&stack->a, stack->init_array, stack->size);
+}
+int	is_sorted2(t_list **a)
+{
+	while ((*a) && (*a)->link != NULL)
 	{
-		ft_sort_int_tab(stack->init_array, stack->size);
-		init_helper(helper, stack->size);
-		push_to_b(&stack->a, &stack->b, helper, stack->init_array);
-		stack->size--;
-		push_to_a(stack);
+		if ((*a)->data < (*a)->link->data)
+		{
+			*a = (*a)->link;
+			return (1);
+		}
+		else
+			return (0);
 	}
+	return (0);
 }
 
 int	main(int ac, char **av)
 {
-	t_stack		stack;
-	t_helper	helper;
-	int			size;
-	int			*tab;
+	t_stack stack;
+	char	*move;
 
-	(void)ac;
 	stack.a = NULL;
 	stack.b = NULL;
-	size = get_array_size(av, ac);
-	stack.size = size;
-	tab = fill_array(av, ac);
-	check_duplicates(tab, size);
-	fill_stack_a(&stack.a, tab, size);
-	stack.init_array = tab;
-	if (is_sorted(stack.init_array, stack.size) == 1)
-		exit(0);
-	sort_stack(&stack, &helper);
+	if (ac > 1)
+	{
+		init_main(&stack, ac, av);
+		move = get_next_line(0);
+		while (move)
+		{
+			
+			if (!ft_strncmp(move, "\n", ft_strlen("\n")))
+				break ;
+			do_moves(move, &stack);
+			free(move);
+			move = get_next_line(0);
+		}
+		if (is_sorted2(&stack.a) == 0 && !ft_lstsize(stack.b)
+			&& ft_lstsize(stack.a) == stack.size)
+			ft_putstr_fd(1, "OK\n");
+		else
+			ft_putstr_fd(1, "KO\n");
+	}
 }
